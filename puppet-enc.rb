@@ -1,0 +1,27 @@
+#!/usr/bin/ruby
+#
+#   Author: Rohith
+#   Date: 2014-03-03 23:44:58 +0000 (Mon, 03 Mar 2014)
+#
+#  vim:ts=4:sw=4:et
+#
+
+require 'rubygems' if RUBY_VERSION < '1.9.0'
+
+module PuppetENC
+
+    ROOT = File.expand_path File.dirname __FILE__
+
+    autoload :Version,  "#{ROOT}/libs/version"
+    autoload :Logger,   "#{ROOT}/libs/logger"
+    autoload :Loader,   "#{ROOT}/libs/enc"  
+    
+    def self.version
+        PuppetENC::VERSION
+    end 
+
+    def self.load options
+        PuppetENC::Classify::new options
+    end
+      
+end
