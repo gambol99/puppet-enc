@@ -12,9 +12,9 @@ module PuppetENC
 
     ROOT = File.expand_path File.dirname __FILE__
 
-    autoload :Version,  "#{ROOT}/libs/version"
-    autoload :Logger,   "#{ROOT}/libs/logger"
-    autoload :Loader,   "#{ROOT}/libs/enc"  
+    autoload :Version,  "#{ROOT}/puppet-enc/version"
+    autoload :Logger,   "#{ROOT}/puppet-enc/logger"
+    autoload :Loader,   "#{ROOT}/puppet-enc/enc"  
     
     def self.version
         PuppetENC::VERSION
