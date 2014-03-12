@@ -195,21 +195,8 @@ class Classify
 
     # updates the classification file with the current config
     def node_sync( filename = @classification_file )
-        tempfile = nil
         begin
             info "update: attempting to update the current classification file #{filename}"
-            tempfile = tmpfile
-            debug "update: perfoming a validation test before writing to classification file #{filename}, tempfile #{tempfile}"
-            File.open( tempfile, "w" ) do |tmp|
-                tmp.puts @classify.to_yaml
-            end
-            debug "update: written classification config to tempfile"
-            # step: get the difference between the classification
-            diff_cmd = "/usr/bin/diff %s %s" % [ @classification_file, tempfile ]
-            debug "update: getting the difference between the classification files"
-            classification_diff = %x( "#{diff_cmd}" ) 
-            info "update: difference old and new"
-            info "%s" % [ classification_diff ]
             File.open( @classification_file, "w" ) do |fd|
                 # we remove the extra newline and the symbols
                 fd.puts @classify.to_yaml.gsub( /\n\n/, "\n" ).gsub( /^([ ]+):(.*)/,'\1\2' )
@@ -218,17 +205,11 @@ class Classify
         rescue Exception => e 
             fatal "update: unable to update the classification file, error: " << e.message
             raise Exception, e.message
-        ensure
-           File.delete( tempfile ) if tempfile
         end
     end
 
     def get_key( hostname, domain )
         "%s.%s" % [ hostname, domain ]
-    end
-
-    def tmpfile
-        "/tmp/classification.%s" % [ Time.now.to_i.to_s ]
     end
 
 end
