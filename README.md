@@ -16,7 +16,7 @@ Puppet-enc is a external node classifier for puppet. The classification file its
         ntp: 
         base: 
     nodes: 
-      perdb301-hsk.mol.dmgt.net: 
+      perdb301-hsk.mydomain.com: 
         parameters: {}
         classes: 
           base::default: {}
@@ -24,7 +24,7 @@ Puppet-enc is a external node classifier for puppet. The classification file its
           mol::contentdb:
         groups: 
           puppet::default: {}
-      graphite301-hsk.mol.dmgt.net: 
+      graphite301-hsk.mydomain.com: 
         parameters: {}
         classes: 
           base::default: {}
