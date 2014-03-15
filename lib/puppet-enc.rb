@@ -15,7 +15,7 @@ module PuppetENC
     require "#{ROOT}/puppet-enc/enc"
 
     autoload :Version,  "#{ROOT}/puppet-enc/version"
-    autoload :Logger,   "#{ROOT}/puppet-enc/logger"
+    autoload :Log,      "#{ROOT}/puppet-enc/log"
     autoload :Loader,   "#{ROOT}/puppet-enc/enc"  
     
     def self.version

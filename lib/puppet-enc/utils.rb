@@ -5,12 +5,13 @@
 #
 # vim:ts=4:sw=4:et
 #
+require 'pp'
 module PuppetENC
 module Utils
 
     [:info,:error,:warn,:debug,:fatal].each do |m|
         define_method m do |*args,&block|
-            Logger.send m, *args, &block
+            Log.send m, *args, &block
         end
     end
 

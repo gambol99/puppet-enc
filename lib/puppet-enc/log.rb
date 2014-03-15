@@ -8,12 +8,12 @@
 require 'logger'
 
 module PuppetENC
-class Logger
+class Log
     class << self
         attr_accessor :logger
 
         def init( options = {} )
-            options[:level]     = :debug
+            options[:level]     = options[:level] || :debug
             self.logger         = ::Logger.new(options[:std] || STDOUT)
             self.logger.level   = ::Logger.const_get "#{options[:level].to_s.upcase}"
         end

@@ -17,8 +17,11 @@ class Classify
 
     def initialize options
         @classify   = {}
+        @log_level  = ( options[:verbose] ) ? :debug : :error
         # step: lets load the classification file
+        PuppetENC::Log.init :level => @log_level
         load options[:classify]
+
     end
 
     def list( filter = nil )
