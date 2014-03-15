@@ -5,15 +5,18 @@
 #
 # vim:ts=4:sw=4:et
 #
+require File.expand_path '../utils', __FILE__
 require 'yaml'
 
 module PuppetENC
 class Classify
 
+    include PuppetENC::Utils
+
     @@mains_sections = [ 'nodes', 'groups', 'stats' ]
 
     def initialize options
-        @classify    = {}
+        @classify   = {}
         # step: lets load the classification file
         load options[:classify]
     end

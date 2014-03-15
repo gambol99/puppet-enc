@@ -6,8 +6,7 @@
 #
 # vim:ts=4:sw=4:et
 #
-
-$:.unshift File.join(File.dirname(__FILE__),'.','../libs' )
+$:.unshift File.join(File.dirname(__FILE__),'.','../lib' )
 require 'optparse'
 require 'puppet-enc'
 
@@ -19,7 +18,7 @@ Meta = {
     :version  => "0.0.1"
 }
 
-@@options = {
+@options = {
     :hosts       => [],
     :classify    => './classification.yaml',
     :output      => 'yaml',
@@ -85,7 +84,7 @@ begin
             raise Exception, "exceeded timeout #{@options[:timeout]} secs, trying to acquire lock file #{@options[:lock_file]}"
         end
     end
-    enc = PuppetENC::new @options
+    enc = PuppetENC::load @options
     enc.classify( @options[:hosts] ) do |definition|
         case @options[:output]
         when 'json'

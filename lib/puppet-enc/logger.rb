@@ -12,8 +12,6 @@ class Logger
     class << self
         attr_accessor :logger
 
-        # :level => :debug
-        # :std => out|err|file-name
         def init( options = {} )
             options[:level]     = :debug
             self.logger         = ::Logger.new(options[:std] || STDOUT)
